@@ -33,8 +33,10 @@ class App extends Component {
   render() {
     return (
       <HashRouter>
-        <Route path='/' component={ Navbar } />
-      </HashRouter>
+        <AuthContext.Provider value={this.state.user}>
+          <Route path='/' component={Navbar} />
+        </AuthContext.Provider>
+      </HashRouter >
     );
   }
 }
