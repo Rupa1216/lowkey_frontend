@@ -26,6 +26,10 @@ class App extends Component {
     })
   }
 
+  componentWillUnmount() {
+    this.unsubscribe()
+  }
+
   render() {
     return (
       <HashRouter>
