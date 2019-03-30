@@ -10,6 +10,11 @@ import Navbar from './components/navbar/navbar';
 import AuthContext from './contexts/auth';
 
 class App extends Component {
+
+  state = {
+    user: null
+  }
+
   render() {
     return (
       <HashRouter>
