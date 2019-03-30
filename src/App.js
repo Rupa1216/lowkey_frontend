@@ -1,12 +1,17 @@
 import React, { Component } from 'react';
+import { HashRouter, Route } from 'react-router-dom';
 import './App.css';
+
+// ---- Pages
+import Navbar from './components/navbar/navbar';
+
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <h1>Hello world</h1>
-      </div>
+      <HashRouter>
+        <Route path='/' component={ Navbar } />
+      </HashRouter>
     );
   }
 }
