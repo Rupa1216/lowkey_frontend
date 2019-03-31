@@ -1,21 +1,42 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import AuthContext from '../../contexts/auth';
 import './navbar.css'
 
 export default (props) => {
+
+    const loggedIn =
+    <>
+        <li className="navItem">
+            <Link to='/profile' className="link" >Profile</Link>
+        </li>
+        <li className="navItem">
+            <Link to='/notifications' className="link" >Notifications</Link>
+        </li>
+        <li className="navItem">
+            <Link to='/friends' className="link" >Friends</Link>
+        </li>
+        <li className="navItem">
+            <Link to='/explore' className="link" >Explore</Link>
+        </li>
+        <li className="navItem">
+            <Link className="link" to="/logout">Logout</Link>
+        </li>
+    </>
+
     return (
         <>
             <div className='navbar'>
-                <p className="logo">lowkey</p>
-                <div className='navLinks'>
-                    <Link to='/home' className="link" >Home</Link>
-                    <Link to='/profile' className="link" >Profile</Link>
-                    <Link to='/friends' className="link" >Friends</Link>
-                    <Link to='/explore' className="link" >Explore</Link>
-                </div>
+                <nav>
+                    <Link to='/home' className="logo">lowkey</Link>
+                    <div className='navLinks'>
+                        <li className="navItem">
+                            <Link to='/home' className="link" >Home</Link>
+                        </li>
+                        
+                    </div>
+                </nav>
             </div>
         </>
     )
 }
-
-// const loggedIn and const loggedOut
