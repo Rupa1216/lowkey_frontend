@@ -5,6 +5,16 @@ import './navbar.css'
 
 export default (props) => {
 
+    const loggedOut =
+    <>
+        <li className="navItem">
+            <Link className="link" to="/signup">Sign Up</Link>
+        </li>
+        <li className="navItem">
+            <Link className="link" to="/login">Login</Link>
+        </li>
+    </>
+
     const loggedIn =
     <>
         <li className="navItem">
