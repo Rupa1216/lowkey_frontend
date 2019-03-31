@@ -8,10 +8,10 @@ export default (props) => {
     const loggedOut =
         <>
             <li className="navItem">
-                <Link className="link" to="/signup">Sign Up</Link>
+                <Link className="link" to="/login">Login</Link>
             </li>
             <li className="navItem">
-                <Link className="link" to="/login">Login</Link>
+                <Link className="link" to="/signup">Sign Up</Link>
             </li>
         </>
 
@@ -36,24 +36,28 @@ export default (props) => {
 
     return (
         <>
-            <div className='navbar'>
-                <nav>
-                    <Link to='/home' className="logo">lowkey</Link>
-                    <div className='navLinks'>
-                        <li className="navItem">
-                            <Link to='/home' className="link" >Home</Link>
-                        </li>
-                        <AuthContext.Consumer>
-                            {
-                                user => {
-                                    if (user) return loggedIn
-                                    else return loggedOut
-                                }
-                            }
-                        </AuthContext.Consumer>
-                    </div>
-                </nav>
-            </div>
+            <header>
+                <div className='navbar'>
+                    <nav>
+                        <Link to='/home' className="logo">lowkey</Link>
+                        <div className='navLinks'>
+                            <ul>
+                                <li className="navItem">
+                                    <Link to='/home' className="link" >Home</Link>
+                                </li>
+                                <AuthContext.Consumer>
+                                    {
+                                        user => {
+                                            if (user) return loggedIn
+                                            else return loggedOut
+                                        }
+                                    }
+                                </AuthContext.Consumer>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+            </header>
         </>
     )
 }
