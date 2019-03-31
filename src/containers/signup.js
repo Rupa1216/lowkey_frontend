@@ -4,11 +4,23 @@ import AuthContext from '../contexts/auth';
 
 export default class Signup extends React.Component {
 
-    state ={
+    state = {
 
     }
 
     render() {
-
+        return (
+        <AuthContext.Consumer>
+            {
+                (user) => {
+                    if (user) {
+                        return <Redirect to='/' />
+                    } else {
+                        
+                    }
+                }
+            }
+        </AuthContext.Consumer>
+        )
     }
 }
