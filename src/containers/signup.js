@@ -11,7 +11,12 @@ export default class Signup extends React.Component {
         error: ''
     }
 
+    handleChange = (e) => {
+        this.setState({ [e.target.name]: e.target.value });
+    }
+
     render() {
+        const { email, password, error } = this.state;
         const displayForm = <>
             <h1>Login</h1> 
             
