@@ -15,8 +15,22 @@ export default class Signup extends React.Component {
         this.setState({ [e.target.name]: e.target.value });
     }
 
+    handleSubmit = (e) => {
+        e.preventDefault();
+    
+        const { email, password } = this.state;
+        firebase.auth().createUserWithEmailAndPassword(email, password)
+          .then((response) => {
+            console.log('Returns: ', response);
+          })
+          .catch(err => {
+            const { message } = err;
+            this.setState({ error: message });
+          })
+      }
+
     render() {
-        const { email, password, error } = this.state;
+        const { username, email, password, error } = this.state;
         const displayForm = <>
             <h1>Sign Up</h1> 
             
