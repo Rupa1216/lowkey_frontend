@@ -37,19 +37,19 @@ export default class Signup extends React.Component {
             <h1>Sign Up</h1>
             {displayError}
             <form>
-                <div className="formItem">
+                <div className="form-group formItem">
                     <label htmlFor="exampleInputEmail1">Username</label>
-                    <input type="text" className="input" aria-describedby="emailHelp" placeholder="Enter username" name="username" onChange={this.handleChange} value={username} />
+                    <input type="text" className="form-control input" aria-describedby="emailHelp" placeholder="Enter username" name="username" onChange={this.handleChange} value={username} />
                 </div>
-                <div className="formItem">
+                <div className="form-group formItem">
                     <label htmlFor="exampleInputEmail1">Email</label>
-                    <input type="email" className="input" aria-describedby="emailHelp" placeholder="Enter email" name="email" onChange={this.handleChange} value={email} />
+                    <input type="email" className="form-control input" aria-describedby="emailHelp" placeholder="Enter email" name="email" onChange={this.handleChange} value={email} />
                 </div>
-                <div className="formItem">
+                <div className="form-group formItem">
                     <label htmlFor="exampleInputPassword1">Password</label>
-                    <input type="password" className="input" placeholder="Password" name="password" onChange={this.handleChange} value={password} />
+                    <input type="password" className="form-control input" placeholder="Password" name="password" onChange={this.handleChange} value={password} />
                 </div>
-                <button type="submit" className="submitButton" onClick={this.handleSubmit} >Sign Up</button>
+                <button type="submit" className="btn btn-primary submitButton" onClick={this.handleSubmit} >Sign Up</button>
             </form>
         </>;
 
