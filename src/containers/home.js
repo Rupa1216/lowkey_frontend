@@ -4,6 +4,12 @@ import { Redirect } from 'react-router-dom';
 
 export default class Home extends React.Component {
 
+    state = {
+        userEmail: '',
+        userId: '',
+        token: ''
+    }
+
     render() {
         return (
             <AuthContext.Consumer>
