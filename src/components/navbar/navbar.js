@@ -55,28 +55,6 @@ export default (props) => {
                         </ul>
                     </div>
                 </nav>
-
-           <header>
-                <div className='navbar'>
-                    <nav>
-                        <Link to='/home' className="logo">lowkey</Link>
-                        <div className='navLinks'>
-                            <ul>
-                                <li className="navItem">
-                                    <Link to='/home' className="link" >Home</Link>
-                                </li>
-                                <AuthContext.Consumer>
-                                    {
-                                        user => {
-                                            if (user) return loggedIn
-                                            else return loggedOut
-                                        }
-                                    }
-                                </AuthContext.Consumer>
-                            </ul>
-                        </div>
-                    </nav>
-                </div>
             </header>
         </>
     )
