@@ -5,12 +5,23 @@ import { Redirect } from 'react-router-dom';
 export default class Home extends React.Component {
 
     state = {
-        userEmail: '',
-        userId: '',
-        token: ''
+        user: null
+    }
+
+    componentDidMount() {
+        this.unsubscribe = firebase.auth().onAuthStateChanged((user) => {
+            if (user) {
+                this.setState({ user });
+            }
+            else {
+                this.setState({ user: null })
+            }
+        })
     }
 
     render() {
+        const { userEmail, userId } = this.state; // LATEST LINE CHANGE
+
         return (
             <AuthContext.Consumer>
                 {
