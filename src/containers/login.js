@@ -19,7 +19,7 @@ export default class Login extends React.Component {
         e.preventDefault();
 
         const { email, password } = this.state;
-        firebase.auth().createUserWithEmailAndPassword(email, password)
+        firebase.auth().signInWithEmailAndPassword(email, password)
             .then((response) => {
                 console.log('Returns: ', response);
             })
@@ -36,12 +36,12 @@ export default class Login extends React.Component {
 
             <form>
                 <div className="form-group">
-                    <label htmlFor="exampleInputEmail1">Username</label>
-                    <input type="text" className="form-control" placeholder="Enter email" />
+                    <label htmlFor="exampleInputEmail1">Email</label>
+                    <input type="text" className="form-control" placeholder="Enter email" name="email" value={email} onChange={this.handleChange} />
                 </div>
                 <div className="form-group">
                     <label htmlFor="exampleInputPassword1">Password</label>
-                    <input type="password" className="form-control" placeholder="Password" />
+                    <input type="password" className="form-control" placeholder="Password" value={password} name="password" onChange={this.handleChange} />
                 </div>
                 <button type="submit" className="btn btn-primary" >Login</button>
             </form>
