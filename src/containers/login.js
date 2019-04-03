@@ -11,11 +11,29 @@ export default class Login extends React.Component {
         error: ''
     }
 
+    handleChange = (e) => {
+        this.setState({ [e.target.name]: e.target.value });
+    }
+
+    handleSubmit = (e) => {
+        e.preventDefault();
+
+        const { email, password } = this.state;
+        firebase.auth().createUserWithEmailAndPassword(email, password)
+            .then((response) => {
+                console.log('Returns: ', response);
+            })
+            .catch(err => {
+                const { message } = err;
+                this.setState({ error: message });
+            })
+    }
+
     render() {
 
         const displayForm = <>
             <h1>Login</h1>
-            
+
             <form>
                 <div className="form-group">
                     <label htmlFor="exampleInputEmail1">Username</label>
