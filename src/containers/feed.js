@@ -1,6 +1,6 @@
 import React from 'react';
 import NoPosts from '../components/noPosts/noPosts';
-import Post from '../post/post';
+import Post from '../components/post/post';
 
 export default class Feed extends React.Component {
 
