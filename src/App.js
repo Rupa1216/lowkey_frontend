@@ -18,13 +18,20 @@ import AuthContext from './contexts/auth';
 class App extends Component {
 
   state = {
-    user: null
+    user: null,
+    username: '',
+    email: '',
+    db_id: '',
+    firebase_uid: '',
+    token: ''
   }
 
   componentDidMount() {
     this.unsubscribe = firebase.auth().onAuthStateChanged((user) => {
       if (user) {
-        this.setState({ user });
+        this.setState({ user }, () => {
+          this.getFirebaseIdToken()
+        });
       }
       else {
         this.setState({ user: null })
@@ -34,6 +41,14 @@ class App extends Component {
 
   componentWillUnmount() {
     this.unsubscribe()
+  }
+
+  getFirebaseIdToken = () => {
+    firebase.auth().currentUser.getIdToken(false).then((token) => {
+      this.setState({ token })
+    }).catch((error) => {
+      console.log("Error getting FirebaseID token!")
+    });
   }
 
   render() {
