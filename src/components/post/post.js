@@ -1,29 +1,21 @@
 import React from 'react';
 import Moment from 'moment';
+import Likes from '../like/like';
 
-export default class Post extends React.Component {
-
-    state = {
-        avatar: '',
-        username: '',
-        created_at: '',
-        content: '',
-    }
-
-    render() {
+export default (props) => {
         return (
             <div className="post">
                 <div className='post-header'>
                     <div className='post-header-left'>
-                        <img src={this.state.avatar} alt=''></img>
+                        <img src={props.data.avatar} alt=''></img>
                     </div>
                     <div className='post-header-right'>
-                        <p>{this.props.username}</p>
-                        <p>{moment(`${this.state.created_at}`, "YYYYMMDD").fromNow()}</p>
+                        <p>{props.data.username}</p>
+                        <p>{Moment(`${props.data.created_at}`, "YYYYMMDD").fromNow()}</p>
                     </div>
                 </div>
                 <div className='post-body'>
-                    {this.state.content}
+                    {props.data.content}
                 </div>
                 <div className="post-footer">
                     <Likes />
@@ -31,4 +23,4 @@ export default class Post extends React.Component {
             </div>
         )
     }
-}
+
