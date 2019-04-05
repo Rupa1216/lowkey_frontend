@@ -2,6 +2,7 @@ import React from 'react';
 import firebase from 'firebase';
 import AuthContext from '../contexts/auth';
 import { Redirect } from 'react-router-dom';
+import Feed from './feed';
 
 export default class Home extends React.Component {
 
@@ -18,7 +19,7 @@ export default class Home extends React.Component {
                             return (
                                 <>
                                     <h2>Welcome back, {user.email}</h2>
-                                    <h4>Your ID is: {user.uid}</h4>
+                                    <Feed />
                                 </>
                             )
                         } else {
