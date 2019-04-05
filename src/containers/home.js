@@ -1,8 +1,15 @@
 import React from 'react';
+import firebase from 'firebase';
 import AuthContext from '../contexts/auth';
 import { Redirect } from 'react-router-dom';
 
 export default class Home extends React.Component {
+
+    static contextType = AuthContext;
+
+    state = {
+        
+    }
 
     render() {
         return (
@@ -12,8 +19,7 @@ export default class Home extends React.Component {
                         if (user) {
                             return (
                                 <>
-                                    <h2>Welcome back, {user.email}</h2>
-                                    <h4>Your ID is: {user.uid}</h4>
+                                    <h2>Welcome back, {this.context.username}!</h2>
                                 </>
                             )
                         } else {
