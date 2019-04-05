@@ -9,6 +9,7 @@ import Signup from './containers/signup';
 import Home from './containers/home';
 import Login from './containers/login';
 import Logout from './containers/logout';
+import NotFound from './components/notFound/notFound';
 
 
 // ---- Contexts
@@ -46,6 +47,7 @@ class App extends Component {
               <Route path='/signup' exact component={Signup} />
               <Route path='/login' exact component={Login} />
               <Route path='/logout' exact component={Logout} />
+              <Route component={NotFound} />
             </Switch>
           </div>
         </AuthContext.Provider>
