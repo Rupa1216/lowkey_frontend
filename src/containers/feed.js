@@ -1,8 +1,11 @@
 import React from 'react';
+import AuthContext from '../contexts/auth';
 import NoPosts from '../components/noPosts/noPosts';
 import Post from '../components/post/post';
 
 export default class Feed extends React.Component {
+
+    static contextType = AuthContext;
 
     state = {
         loading: false,
@@ -20,7 +23,7 @@ export default class Feed extends React.Component {
         const newsfeed = <ul>
             {posts.map((e, i) => { // key = {post.id}
                 return <li key={i}>
-                    <Post post={e} data={this.state} />
+                    <Post data={e} />
                 </li>
             })}
         </ul>
