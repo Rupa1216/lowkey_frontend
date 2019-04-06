@@ -36,11 +36,11 @@ export default (props) => {
 
     return (
         <>
-            <header className='header'>
-                <nav>
+            <header className='lk-header'>
+                <nav className="nav">
                     <Link to='/' className="logo">lowkey</Link>
                     <div className='navLinks'>
-                        <ul>
+                        <ul className='ul'>
                             <li className="navItem">
                                 <Link to='/' className="link" >Home</Link>
                             </li>
