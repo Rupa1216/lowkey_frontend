@@ -4,11 +4,11 @@
     padding: 0;
 }
 
-header * {
+.lk-header * {
     display: inline;
 }
 
-header {
+.lk-header {
     background-color: white;
     position: fixed;
     top: 0;
