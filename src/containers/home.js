@@ -20,7 +20,7 @@ export default class Home extends React.Component {
                         if (user) {
                             return (
                                 <>
-                                    <h2>Welcome back, {this.context.username}!</h2>
+                                    <h2>Welcome back, {this.context.email}!</h2>
                                     <Feed />
                                 </>
                             )
@@ -33,3 +33,4 @@ export default class Home extends React.Component {
         )
     }
 }
+
