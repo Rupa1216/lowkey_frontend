@@ -9,7 +9,10 @@ import Signup from './containers/signup';
 import Home from './containers/home';
 import Login from './containers/login';
 import Logout from './containers/logout';
+import CreatePost from './components/createPost/createPost';
 import NotFound from './components/notFound/notFound';
+import Loading from './components/loading/loading';
+import FriendsList from './containers/friendsList';
 
 
 // ---- Contexts
@@ -21,8 +24,8 @@ class App extends Component {
     user: null,
     username: '',
     email: '',
-    db_id: '',
-    firebase_uid: '',
+    user_id: '',
+    fbase_uid: '',
     token: ''
   }
 
@@ -52,21 +55,34 @@ class App extends Component {
   }
 
   render() {
+
     return (
       <HashRouter>
         <AuthContext.Provider value={this.state.user}>
           <Route path='/' component={Navbar} />
           <div className='container margin'>
-            <Switch>
-              <Route path='/' exact component={Home} />
-              <Route path='/signup' exact component={Signup} />
-              <Route path='/login' exact component={Login} />
-              <Route path='/logout' exact component={Logout} />
-              <Route component={NotFound} />
-            </Switch>
+              {this.state.user ? (
+                <Switch>
+                  <Route path='/' exact component={Home} />
+                  <Route path='/login' exact component={Login} />
+                  <Route path='/signup' exact component={Signup} />
+                  <Route path='/logout' exact component={Logout} />
+                  <Route path='/create' exact component={CreatePost} />
+                  <Route path='/friends' exact component={FriendsList} />
+                  <Route component={NotFound} />
+                </Switch>
+              ) : (
+                <Switch>
+                  <Route path='/login' exact component={Login} />
+                  <Route path='/signup' exact component={Signup} />
+                  <Route component={Loading} />
+                </Switch>
+                )
+              }
           </div>
         </AuthContext.Provider>
       </HashRouter >
+
     );
   }
 }
