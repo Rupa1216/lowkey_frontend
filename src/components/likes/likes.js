@@ -11,10 +11,12 @@ export default class Likes extends React.Component {
     handleLike = (e) => {
         let { count } = this.state;
         if (count === 0) {
-            this.setState({ liked: true, count: 1, show: true })
+            count++
+            this.setState({ liked: true, count: count, show: true })
         }
         else {
-            this.setState({ liked: false, count: 0, show: false })
+            count--
+            this.setState({ liked: false, count: count, show: false })
         }
     }
 
@@ -25,15 +27,15 @@ export default class Likes extends React.Component {
         return (
             <>
                 <div className='likes-container d-flex justify-content-start'>
-                    <div>
+                    <div style={{ cursor: "pointer" }}>
                         {liked === true ? (
-                            <i className="far fa-heart text-danger mr-3" onClick={this.handleLike} ></i>
+                            <i className="far fa-heart icon text-danger mr-3" onClick={this.handleLike} ></i>
                         ) : (
-                            <i className="far fa-heart mr-3" onClick={this.handleLike} ></i>
-                        )}
+                                <i className="far fa-heart icon mr-3" onClick={this.handleLike} ></i>
+                            )}
                     </div>
                     <div className='count'>
-                        { show === true? count : null}
+                        {show === true ? count : null}
                     </div>
                 </div>
             </>
