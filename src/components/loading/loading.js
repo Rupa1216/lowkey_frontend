@@ -1,5 +1,5 @@
 import React from 'react';
 
 export default (props) => {
-    return <div className='loading'>Loading...</div>
+    return  <i className="fas fa-spinner fa-pulse fa-3x "></i>
 }
