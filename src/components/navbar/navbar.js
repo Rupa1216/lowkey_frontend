@@ -38,21 +38,31 @@ export default (props) => {
         <>
             <header className='lk-header'>
                 <nav className="nav">
-                    <Link to='/' className="logo">lowkey</Link>
-                    <div className='navLinks'>
-                        <ul className='ul'>
-                            <li className="navItem">
-                                <Link to='/' className="link" >Home</Link>
-                            </li>
-                            <AuthContext.Consumer>
-                                {
-                                    user => {
-                                        if (user) return loggedIn
-                                        else return loggedOut
+                    <div className='allNavItems'>
+                        <div>
+                            <Link to='/' className="logo">lowkey</Link>
+                        </div>
+                        <div className='navLinks'>
+                            <ul className='ul'>
+                                <li className="navItem">
+                                    <Link to='/' className="link" >Home</Link>
+                                </li>
+                                <AuthContext.Consumer>
+                                    {
+                                        user => {
+                                            if (user) return loggedIn
+                                            else return loggedOut
+                                        }
                                     }
-                                }
-                            </AuthContext.Consumer>
-                        </ul>
+                                </AuthContext.Consumer>
+                            </ul>
+                        </div>
+                        <div className="search justify-content-end">
+                        <form class="form-inline">
+                            <input className="form-control mr-sm-2" type="search" placeholder="@Username" aria-label="Search" />
+                            <button className="btn btn-sm btn-outline-info my-2 my-sm-0" type="submit">Search</button>
+                        </form>
+                        </div>
                     </div>
                 </nav>
             </header>
