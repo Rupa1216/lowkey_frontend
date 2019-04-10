@@ -9,6 +9,9 @@ export default class Signup extends React.Component {
     static contextType = AuthContext;
 
     state = {   
+        username: '',
+        email: '',
+        password: '',
         error: '',
     }
 
@@ -22,8 +25,8 @@ export default class Signup extends React.Component {
         const { email, password } = this.state;
         firebase.auth().createUserWithEmailAndPassword(email, password)
             .then((res) => {
-                console.log('Returns: ', res);
-                return axios.post('https://lowkey-sd.herokuapp.com/users/')
+                console.log('Returns: ', res.user.uid);
+                // return axios.post('https://lowkey-sd.herokuapp.com/users/')
             })
             .catch(err => {
                 const { message } = err;
@@ -32,7 +35,8 @@ export default class Signup extends React.Component {
     }
 
     render() {
-        const { user_id, username, email, password, error } = this.context;
+        const { username, email, password, error } = this.state;
+
         const displayError = error === '' ? '' : <div className="alert alert-danger" role="alert">{error}</div>
         const displayForm = <>
             <h1>Sign Up</h1>
@@ -41,7 +45,7 @@ export default class Signup extends React.Component {
             <form>
                 <div className="form-group formItem">
                     <label htmlFor="exampleInputEmail1">Username</label>
-                    <input type="text" className="form-control input" aria-describedby="emailHelp" placeholder="Enter username" name="username" onChange={this.handleChange} value={username} />
+                    <input type="text" className="form-control input" placeholder="Enter username" name="username" onChange={this.handleChange} value={username} />
                 </div>
                 <div className="form-group formItem">
                     <label htmlFor="exampleInputEmail1">Email</label>
