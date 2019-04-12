@@ -13,6 +13,7 @@ export default class Signup extends React.Component {
         email: '',
         password: '',
         error: '',
+        fbase_uid: ''
     }
 
     handleChange = (e) => {
@@ -22,11 +23,19 @@ export default class Signup extends React.Component {
     handleSubmit = (e) => {
         e.preventDefault();
 
-        const { email, password } = this.state;
+        const { username, email, password } = this.state;
+
         firebase.auth().createUserWithEmailAndPassword(email, password)
             .then((res) => {
-                console.log('Returns: ', res.user.uid);
-                // return axios.post('https://lowkey-sd.herokuapp.com/users/')
+                const fbase_uid = res.user.uid
+                // console.log('Returns: ', res.user.uid);
+                this.setState({ fbase_uid }, () => 
+                axios.post('http://localhost:3003/users/', {
+                    fbase_uid, 
+                    username: username, 
+                    email: email  
+                })
+                )
             })
             .catch(err => {
                 const { message } = err;
