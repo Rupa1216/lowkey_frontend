@@ -9,10 +9,12 @@ import Signup from './containers/signup';
 import Home from './containers/home';
 import Login from './containers/login';
 import Logout from './containers/logout';
-import CreatePost from './components/createPost/createPost';
 import NotFound from './components/notFound/notFound';
 import Loading from './components/loading/loading';
 import FriendsList from './containers/friendsList';
+import Profile from './components/profile/profile';
+import CreatePost from './components/createPost/createPost';
+// import SearchResult from './components/searchResult/searchResult';
 
 
 // ---- Contexts
@@ -32,8 +34,10 @@ class App extends Component {
   componentDidMount() {
     this.unsubscribe = firebase.auth().onAuthStateChanged((user) => {
       if (user) {
-        this.setState({ user }, () => {
+        const { email, uid } = user;
+        this.setState({ user, email, fbase_uid: uid }, () => {
           this.getFirebaseIdToken()
+          // axios call here
         });
       }
       else {
@@ -55,7 +59,7 @@ class App extends Component {
   }
 
   render() {
-
+    console.log('App state', this.state)
     return (
       <HashRouter>
         <AuthContext.Provider value={this.state.user}>
@@ -69,6 +73,8 @@ class App extends Component {
                   <Route path='/logout' exact component={Logout} />
                   <Route path='/create' exact component={CreatePost} />
                   <Route path='/friends' exact component={FriendsList} />
+                  <Route path='/profile' exact component={Profile} />
+                  {/* <Route path='/search' exact component={SearchResult} /> */}
                   <Route component={NotFound} />
                 </Switch>
               ) : (
@@ -82,7 +88,6 @@ class App extends Component {
           </div>
         </AuthContext.Provider>
       </HashRouter >
-
     );
   }
 }
