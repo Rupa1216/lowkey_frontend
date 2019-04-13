@@ -1,0 +1,16 @@
+.create-post-button {
+    background-color : #5CA4A9;
+    position: absolute;
+}
+
+.icon {
+    display: block;
+    height: auto;
+    position: fixed;
+    bottom: 25px;
+    background-color : #5CA4A9;
+    color: #E6EBE0;
+    padding: 10px 9px;
+    right: 25px;
+    width: 3%;
+}
