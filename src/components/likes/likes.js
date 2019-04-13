@@ -21,7 +21,6 @@ export default class Likes extends React.Component {
     }
 
     render() {
-        console.log(this.state)
         const { count, liked, show } = this.state;
 
         return (
